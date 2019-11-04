@@ -13,6 +13,8 @@
                     {{ $profile->id }}</br>
                    
                     <dl class="form-rtop row">
+                        <dt class="col-sm-2" for="image">画像</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->image_path }}</dd>
                         
                         <dt class="col-sm-2" for="name">名前</dt>
                         <dd class="col-sm-10 meta-name">{{ $profile->name }}</dd>
