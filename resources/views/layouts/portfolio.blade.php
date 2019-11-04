@@ -13,7 +13,7 @@
 
         <!-- Scripts -->
          <!-- Laravel標準で用意されているJavascriptを読み込む -->
-        <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        <script src="{{ secure_asset('js/portfolio.js') }}" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -24,7 +24,7 @@
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         
         <!-- 作成したCSSを読み込み -->
-        <link href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/portfolio.css') }}" rel="stylesheet">
         
     </head>
     <body>
@@ -32,17 +32,16 @@
             <!-- ナビゲーションバー -->
             <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
                 <div class="container">
-                    <!--<a class="navbar-brand" href="{{ url('/') }}">-->
-                    <!--    {{ config('app.name', 'Laravel') }}-->
-                    <!--</a>-->
-                    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-                    <!--    <span class="navbar-toggler-icon"></span>-->
-                    <!--</button>-->
+                <!--    <a class="navbar-brand" href="{{ url('/') }}">-->
+                <!--        {{ config('app.name', 'Laravel') }}-->
+                <!--    </a>-->
+                <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+                <!--        <span class="navbar-toggler-icon"></span>-->
+                <!--    </button>-->
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-
                         </ul>
 
                         <!-- Right Side Of Navbar -->

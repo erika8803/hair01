@@ -26,14 +26,13 @@ class ProfileController extends Controller
           if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image');
             $profile->image_path = basename($path);
-            unset($form['image']);
           } else {
             $profile->image_path = null;
           }
           
             // フォームから送信されてきた_tokenを削除する
           unset($form['_token']);
-          unset($form['remove']);
+          unset($form['image']);
           
             // データベースに保存
           $profile->fill($form);

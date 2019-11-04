@@ -11,36 +11,31 @@
                 <form method="POST"action="{{ action('Admin\ProfileController@add') }}"></form>
                  @foreach($posts as $profile)
                     {{ $profile->id }}</br>
-                    
-                    <div class="form-rtop row">
-                        <label class="col-md-10" for="name">名前：</label>
-                            {{ $profile->name }}
-                    </div>
-                    <div class="form-rtop row">
-                        <label class="col-md-10" for="career">スタイリスト歴：</label>
-                            {{ $profile->career }}
-                    </div>
-                    <div class="form-rtop row">
-                        <label class="col-md-10" for="style">得意なスタイル：</label>
-                             {{ $profile->style }}
-                    </div>
-                    <div class="form-rtop row">
-                        <label class="col-md-10" for="counseling">カウンセリング方法：</label>
-                            {{ $profile->counseling }}
-                    </div>
-                    <div class="form-rtop row">
-                        <label class="col-md-10" for="shopname">店舗名：</label>
-                            {{ $profile->shopname }}
-                    </div>
-                     <div class="form-rtop row">
-                        <label class="col-md-10" for="url">店舗URL：</label>
-                            {{ $profile->url }}
-                    </div>
-                     <div class="form-rtop row">
-                        <label class="col-md-10" for="address">店舗住所：</label>
-                            {{ $profile->address }}
-                    </div>
-                @endforeach
+                   
+                    <dl class="form-rtop row">
+                        
+                        <dt class="col-sm-2" for="name">名前</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->name }}</dd>
+                        
+                        <dt class="col-sm-2" for="career">スタイリスト歴</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->career }}</dd>
+                        
+                        <dt class="col-sm-2" for="style">得意なスタイル</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->style }}</dd>
+                        
+                        <dt class="col-sm-2" for="counseling">カウンセリング方法</dt>
+                        <dd class="col-sm-10 meta-name"> {{ $profile->counseling }}</dd>
+                        
+                        <dt class="col-sm-2" for="shopname">店舗名</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->shopname }}</dd>
+                        
+                        <dt class="col-sm-2" for="url">店舗URL</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->url }}</dd>
+                        
+                        <dt class="col-sm-2" for="address">店舗住所</dt>
+                        <dd class="col-sm-10 meta-name">{{ $profile->address }}</dd>
+                  </dl>
+             @endforeach
                 <div>
                     <a href="{{ action('Admin\ProfileController@edit', ['id' => $profile->id]) }}">
                         <input type="submit" class="btn btn-primary" value="編集画面">
