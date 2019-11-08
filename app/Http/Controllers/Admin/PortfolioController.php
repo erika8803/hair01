@@ -40,7 +40,7 @@ class PortfolioController extends Controller
         $portfolio->save();
     
             // リダイレクトする
-        return redirect('admin/portfolio/create');
+        return redirect('admin/portfolio');
     }
     
     public function index(Request $request)
@@ -63,13 +63,13 @@ class PortfolioController extends Controller
         if (empty($portfolio)) {
           abort(404);
         }
-        return view('admin.portfolio.edit', ['portfolio_form => $portfolio']);
+        return view('admin.portfolio.edit', ['portfolio_form' => $portfolio]);
     }
     
     public function update(Request $request)
     {
         // Varidationをかける
-        $this->validate($request、Portfolio::$rules);
+        $this->validate($request, Portfolio::$rules);
         
         // portfolio Model からデータを取得
         $portfolio = Portfolio::find($request->id);
@@ -77,9 +77,9 @@ class PortfolioController extends Controller
         // 送信されてきたフォームデータを格納する
         $portfolio_form = $request->all();
         
-        if (iseet($protfolio_form['image'])) {
+        if (isset($protfolio_form['image'])) {
           $path = $request->file('image')->store('public/image');
-          $profile->image_path = basename($path);
+          $portfolio->image_path = basename($path);
           
           } elseif (isset($request->remove)) {
               $portfolio->image_path = null;
@@ -91,14 +91,14 @@ class PortfolioController extends Controller
     
         $portfolio->fill($portfolio_form)->save();
         
-        return redirect('admin/portofolio');
+        return redirect('admin/portfolio');
       }
       
     public function delete(Request $request)
     {
-      $portfolio = Portfolio::find($request->id);
-      $portfolio->delete();
-      return redirect('admin/portfolio');
+        $portfolio = Portfolio::find($request->id);
+        $portfolio->delete();
+        return redirect('admin/portfolio');
     }
       
   }

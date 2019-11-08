@@ -13,12 +13,16 @@ class UserController extends Controller
     {
       // 投稿日時順に表示
       $posts = Portfolio::all()->sortByDesc('updated_at');
-      
-      if (count($posts) > 0) {
-        $headline = $posts->shift();
-      } else {
-        $headline = null;
+    
+      return view('portfolio.index', ['posts' => $posts]);
+    }
+    
+    public function edit(Request $request)
+    {
+      $profile = Profiles::find($request->id);
+      if (empty($profile)) {
+        abort(404);
       }
-      return view('portfolio.index', ['headline' => $headline, 'posts' => $posts]);
+      return view('admin.profile.edit', ['profile_form' => $profile]);
     }
 }

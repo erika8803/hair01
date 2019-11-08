@@ -31,11 +31,11 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="male">男性
-                    <input type="radio" class="form-control" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
+                    <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="female">女性
-                    <input type="radio" class="form-control" name="gender" value="female" {{ old('gender') === 'female' ? 'checked' : '' }}>
+                    <input type="radio"  name="gender" value="female" {{ old('gender') === 'female' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -46,15 +46,15 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="coarsehair">太い
-                    <input type="radio" class="form-control" name="hair_type" value="coarsehair" {{ old('hair_type') === 'coarsehair' ? 'checked' : '' }}>
+                    <input type="radio" radio" name="hair_type" value="coarsehair" {{ old('hair_type') === 'coarsehair' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="mediumcoarse">普通
-                    <input type="radio" class="form-control" name="hair_type" value="mediumcoarse" {{ old('hair_type') === 'mediumcoarse' ? 'checked' : '' }}>
+                    <input type="radio" radio" name="hair_type" value="mediumcoarse" {{ old('hair_type') === 'mediumcoarse' ? 'checked' : '' }}>
                   </label>
                   
                   <label class="col-md-3" for="finehair">細い
-                    <input type="radio" class="form-control" name="hair_type" value="finehair" {{ old('gehair_typender') === 'finehair' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_type" value="finehair" {{ old('gehair_typender') === 'finehair' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -65,15 +65,15 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="thick">多い
-                    <input type="radio" class="form-control" name="hair_volume" value="thick" {{ old('hair_volume') === 'thick' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_volume" value="thick" {{ old('hair_volume') === 'thick' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="medium">普通
-                    <input type="radio" class="form-control" name="hair_volume" value="medium" {{ old('hair_volume') === 'medium' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_volume" value="medium" {{ old('hair_volume') === 'medium' ? 'checked' : '' }}>
                   </label>
                   
                   <label class="col-md-3" for="thin">少ない
-                    <input type="radio" class="form-control" name="hair_volume" value="thin" {{ old('hair_volume') === 'thin' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_volume" value="thin" {{ old('hair_volume') === 'thin' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -84,15 +84,15 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="long">ロング
-                    <input type="radio" class="form-control" name="hair_length" value="long" {{ old('hair_length') === 'long' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_length" value="long" {{ old('hair_length') === 'long' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="medium">ミディアム
-                    <input type="radio" class="form-control" name="hair_length" value="medium" {{ old('hair_length') === 'medium' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_length" value="medium" {{ old('hair_length') === 'medium' ? 'checked' : '' }}>
                   </label>
                   
                   <label class="col-md-3" for="short">ショート
-                    <input type="radio" class="form-control" name="hair_length" value="short" {{ old('hair_length') === 'short' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_length" value="short" {{ old('hair_length') === 'short' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -103,15 +103,15 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="bright">明るい
-                    <input type="radio" class="form-control" name="hair_color" value="bright" {{ old('hair_color') === 'bright' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_color" value="bright" {{ old('hair_color') === 'bright' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="dark">暗め
-                    <input type="radio" class="form-control" name="hair_color" value="dark" {{ old('hair_color') === 'dark' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_color" value="dark" {{ old('hair_color') === 'dark' ? 'checked' : '' }}>
                   </label>
                   
                   <label class="col-md-3" for="other">他
-                    <input type="radio" class="form-control" name="hair_color" value="other" {{ old('hair_color') === 'other' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_color" value="other" {{ old('hair_color') === 'other' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -122,7 +122,8 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="yes">あり
-                    <input type="checkbox" class="form-control" name="straighte" value="1" {{ old('straighte') === '1' ? 'checked' : '' }}>
+                   <input type="hidden" name="straighte" value="0" >
+                    <input type="checkbox" name="straighte" value="1" {{ old('straighte') === '1' ? 'checked' : '' }}>
                   </label>
                   
                 </div>
@@ -133,30 +134,37 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="yes">あり
-                    <input type="checkbox" class="form-control" name="perm" value="1" {{ old('perm') === '1' ? 'checked' : '' }}>
+                    <input type="hidden" name="perm" value="0" >
+                    <input type="checkbox" name="perm" value="1" {{ old('perm') === '1' ? 'checked' : '' }}>
                   </label>
                 
                 </div>
               </div>
               
+              </br>
+              
               <div class="form-rtop row">
                 <label class="col-md-3" for="hair_style">ヘアースタイル</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control" name="hair_style" value="{{ old('hair_style') }}">
+                  <textarea type="text" class="form-control" name="hair_style" rows="7">{{ old('hair_style') }}</textarea>
                 </div>
               </div>
+              
+              </br>
               
               <div class="form-rtop row">
                 <label class="col-md-3" for="hair_care">ヘアケア方法</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control" name="hair_care" value="{{ old('hair_care') }}">
+                  <textarea type="text" class="form-control" name="hair_care" rows="7">{{ old('hair_care') }}</textarea>
                 </div>
               </div>
               
+              </br>
+              
               <div class="form-rtop row">
-                <label class="col-md-3" for="other">他</label>
+                <label class="col-md-3" for="other">その他</label>
                 <div class="col-md-8">
-                  <input type="text" class="form-control" name="other" value="{{ old('other') }}">
+                  <textarea type="text" class="form-control" name="other" rows="7">{{ old('other') }}</textarea>
                 </div>
               </div>
               

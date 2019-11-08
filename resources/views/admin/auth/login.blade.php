@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h4>一般ユーザー</h4>
+                <h4>Adminユーザー</h4>
                 <div class="card-header">{{ __('messages.Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -60,7 +60,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('messages.Forgot Your Password?') }}
+                                        {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>

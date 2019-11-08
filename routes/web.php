@@ -15,8 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Admin 認証不要
+Route::group(['prefix' => 'admin'], function() 
+  {
+      // home画面
+      Route::get('home', 'Admin\Auth\HomeController@index')->name('admin.home');
+      // login画面
+      Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+      Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
+      Route::get('register', 'Admin\Auth\RegisterController@showRegisterForm')->name('admin.register');
+      Route::post('register', 'Admin\Auth\RegisterController@create')->name('admin.register');
+  });
+
+// Adminログイン後
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() 
       {
+        // ログアウト画面
+        Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.auth.logout');
+        Route::get('home','Admin\Auth\HomeController@index')->name('admin.auth.home');
+        
   // プロフィール画面表示
         Route::get('profile/create', 'Admin\ProfileController@add');
         Route::post('profile/create', 'Admin\ProfileController@create');
@@ -25,10 +42,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
         Route::post('profile/edit', 'Admin\ProfileController@update');
         Route::get('profile/delete', 'Admin\ProfileController@delete');
       });
-      
+  
+ // ポートフォリオ 画面表示      
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() 
       {
-  // プロフィール画面表示
         Route::get('portfolio/create', 'Admin\PortfolioController@add');
         Route::post('portfolio/create', 'Admin\PortfolioController@create');
         Route::get('portfolio', 'Admin\PortfolioController@index');

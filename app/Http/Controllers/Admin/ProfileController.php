@@ -38,8 +38,9 @@ class ProfileController extends Controller
           $profile->fill($form);
           $profile->save();
     
-              // リダイレクトする
-          return redirect('admin/profile/create');
+              // 入力一覧を表示。
+          return redirect('admin/profile');
+          
         }
     
     public function index(Request $request)
@@ -75,7 +76,7 @@ class ProfileController extends Controller
           // 送信されてきたフォームデータを格納する
           $profile_form = $request->all();
           
-          if (iseet($profile_form['image'])) {
+          if (isset($profile_form['image'])) {
             $path =$request->file('image')->store('public/image');
             $profile->image_path = basename($path);
             

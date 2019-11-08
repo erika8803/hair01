@@ -9,8 +9,11 @@
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <link rel="dns-prefetch" href="https:fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    
+    <!-- css -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/front.css') }}" rel="stylesheet">
+    
   </head>
   <body>
     <div id="app">
@@ -30,7 +33,7 @@
               
               @guest
               <li>
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}
+                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.Login') }}
                 </a>
                 </li>
               @else
@@ -42,7 +45,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{{ ('logout') }}"
                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('messages.Logout') }}
                   </a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

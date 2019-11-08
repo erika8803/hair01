@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateProfilesTable extends Migration
+
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,19 +13,17 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-         Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image_path')->nullable();
             $table->string('name');
-            $table->string('career')->nullable();
-            $table->text('style')->nullable();
-            $table->text('counseling')->nullable();
-            $table->string('shopname');
-            $table->string('url');
-            $table->string('address');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -31,6 +31,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('admins');
     }
 }

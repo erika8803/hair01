@@ -37,7 +37,7 @@
                      @foreach($posts as $portfolio)
                         {{ $portfolio->id }}</br>
                         
-                       <dl class="form-rtop row">
+                        <dl class="form-rtop row">
                         
                         <dt class="col-sm-3" for="gender">性別</dt>
                         <dd class="col-sm-8 meta-name">{{ $portfolio->gender }}</dd>
@@ -66,7 +66,7 @@
                         <dt class="col-sm-3" for="hair_care">手入れ方法</dt>
                         <dd class="col-sm-8 meta-name">{{ $portfolio->hair_care }}</dd>
                         
-                        <dt class="col-sm-3" for="other">他</dt>
+                        <dt class="col-sm-3" for="other">その他</dt>
                         <dd class="col-sm-8 meta-name">{{ $portfolio->other }}</dd>
                   </dl>
                 <div>

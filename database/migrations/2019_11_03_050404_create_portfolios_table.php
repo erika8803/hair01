@@ -15,17 +15,17 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->string('gender');
             $table->string('hair_type');
             $table->string('hair_volume');
             $table->string('hair_length');
             $table->string('hair_color');
-            $table->boolean('straighte');
-            $table->boolean('perm');
+            $table->boolean('straighte')->nullable();
+            $table->boolean('perm')->nullable();
             $table->text('hair_style');
-            $table->text('hair_care');
-            $table->text('other')->nullable;
+            $table->text('hair_care')->nullable();
+            $table->text('other')->nullable();
             $table->timestamps();
         });
     }

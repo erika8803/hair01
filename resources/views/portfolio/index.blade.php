@@ -2,58 +2,66 @@
 
 @section('content')
     <div class="container">
-        <hr color="#c0c0c0">
-        @if (!is_null($headline))
+     <h3>ポートフォリ一覧</h3>
+        <form action="{{ action('Admin\ProfileController@add') }}" method="get">
+            <input type="submit" class="btn btn-primary" value="Profile新規作成">
+            
+            <a href="{{ action('Admin\PortfolioController@add') }}">
+            <input type="button" class="btn btn-primary" value="Portfolio新規作成">
+            </a>
+            <a href="{{ action('Admin\PortfolioController@index') }}">
+            <input type="button" class="btn btn-primary" value="Portfolio編集画面">
+            </a>
+           
+            
+        </form>
+        </br>
             <div class="row">
-                <div class="headline col-md-10 mx-auto">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="caption mx-auto">
-                                <div class="image">
-                                    @if ($headline->image_path)
-                                        <img src="{{ asset('storage/image/' . $headline->image_path) }}">
-                                    @endif
+                <div class="posts">
+                    <div class="post">
+                    @php $count = 0; @endphp 
+                    @foreach($posts as $post)
+                        
+                            <!-- 投稿数を2で割ったあまりの時に div=row を閉じる、閉じないを処理。 -->
+                            @if (!($count % 2)) 
+                            
+                            <div class="row">
+                                <!--<div class="text col-md-10">-->
+                            @endif
+                                <div class="col-md-6">
+                                    <div class="image">
+                                        @if ($post->image_path)
+                                            <img src="{{ asset('storage/image/' . $post->image_path) }}">
+                                        @endif
+                                    </div>   
+                                    <div class="date">
+                                        {{ $post->updated_at->format('Y年m月d日') }}
+                                    </div>
+                                    <div class="title">
+                                        {{ str_limit($post->hair_style, 150) }}
+                                    </div>
+                                    <div class="body mt-3">
+                                        {{ str_limit($post->hair_care, 1500) }}
+                                    </div>
                                 </div>
-                                <div class="title p-2">
-                                    <h1>{{ str_limit($headline->hair_style, 70) }}</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="body mx-auto">{{ str_limit($headline->hair_care, 650) }}</p>
-                        </div>
+                            @if (($count % 2)) 
+                                <!--</div>-->
+                            </div> 
+                           
+                            @endif
+                        
+                        
+                    @php $count++; @endphp    
+                    @endforeach
+                    
+                    @if (!($count % 2)) 
+                            <!-- 投稿が奇数の場合の閉じタグ -->
+                            </div> 
+                           
+                    @endif
                     </div>
                 </div>
             </div>
-        @endif
-        <hr color="#c0c0c0">
-        <div class="row">
-            <div class="posts col-md-8 mx-auto mt-3">
-                @foreach($posts as $post)
-                    <div class="post">
-                        <div class="row">
-                            <div class="text col-md-6">
-                                <div class="date">
-                                    {{ $post->updated_at->format('Y年m月d日') }}
-                                </div>
-                                <div class="title">
-                                    {{ str_limit($post->hair_style, 150) }}
-                                </div>
-                                <div class="body mt-3">
-                                    {{ str_limit($post->hair_care, 1500) }}
-                                </div>
-                            </div>
-                            <div class="image col-md-6 text-right mt-4">
-                                @if ($post->image_path)
-                                    <img src="{{ asset('storage/image/' . $post->image_path) }}">
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <hr color="#c0c0c0">
-                @endforeach
-            </div>
-        </div>
-    </div>
+     
     </div>
 @endsection

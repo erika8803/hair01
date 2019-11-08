@@ -14,7 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        // gurad => web → guard => user に変更
+        'guard' => 'user',
         'passwords' => 'users',
     ],
 
@@ -46,6 +47,19 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        
+        // 追加
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        
+        
     ],
 
     /*
@@ -70,6 +84,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        
+        // 追加
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+            ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +115,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        // 追加
+          'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],
