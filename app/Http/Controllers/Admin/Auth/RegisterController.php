@@ -6,6 +6,9 @@ namespace App\Http\Controllers\Admin\Auth;
 // User→Adminに変更
 use App\Admin;
 
+// 追加
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -82,14 +85,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        // Adminに変更
-        return Admin::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all() )));
+        
+        
+       
+        // // Adminに変更
+        // $admin = Admin::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
+        
+        return $this->registered($request, $user) ?: redirect('admin.auth.register');
+        
     }
     
     

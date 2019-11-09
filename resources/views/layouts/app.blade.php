@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+   <!-- Laravel標準で用意されているJavascriptを読み込む -->
+        <script src="{{ secure_asset('js/portfolio.js') }}" defer></script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

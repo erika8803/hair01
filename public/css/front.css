@@ -1,3 +1,16 @@
+.navbar-laravel {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-brand {
+  color: black !important;
+}
+
+.nav-link {
+  color: black !important;
+}
+
 body {
   background-color: #ffffff;
   color: #000;
@@ -10,7 +23,7 @@ body {
 }
 
 .posts .post .title {
-  font-weight: bold;
+  font-size: 0.8em;
 }
 
 .posts .post .body {

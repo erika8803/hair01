@@ -37,12 +37,16 @@
                                     <div class="date">
                                         {{ $post->updated_at->format('Y年m月d日') }}
                                     </div>
-                                    <div class="title">
-                                        {{ str_limit($post->hair_style, 150) }}
-                                    </div>
-                                    <div class="body mt-3">
-                                        {{ str_limit($post->hair_care, 1500) }}
-                                    </div>
+                                    <h5>ヘアースタイル</h5>
+                                        <div class="title">
+                                            {{ str_limit($post->hair_style, 150) }}
+                                        </div>
+                                        
+                                    </br>
+                                    <h6>ヘアーケア方法</h6>
+                                        <div class="body mt-1">
+                                            {{ str_limit($post->hair_care, 1500) }}
+                                        </div>
                                 </div>
                             @if (($count % 2)) 
                                 <!--</div>-->

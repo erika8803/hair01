@@ -2,8 +2,8 @@
 
 return [
     'Login' => 'ログイン',
-    'E-Mail Addresss' => 'メールアドレス',
-    'Passoword' => 'パスワード',
+    'E-Mail Address' => 'メールアドレス',
+    'Password' => 'パスワード',
     'Remember Me' => 'ログイン情報を記録する',
     'Forgot Your Password?' => 'パスワードをお忘れの方はこちら',
     'Logout' => 'ログアウト',

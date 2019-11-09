@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <form action="{{ action('Admin\PortfolioController@create') }}" method="post" enctype="multipart/form-data">
+      <form action="{{ action('Admin\PortfolioController@edit') }}" method="post">
      
      
         @if (count($errors) > 0)
@@ -46,11 +46,11 @@
                 
                 <div class="col-md-8">
                   <label class="col-md-3" for="coarsehair">太い
-                    <input type="radio" radio" name="hair_type" value="coarsehair" {{ old('hair_type') === 'coarsehair' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_type" value="coarsehair" {{ old('hair_type') === 'coarsehair' ? 'checked' : '' }}>
                   </label>
                   
                  <label class="col-md-3" for="mediumcoarse">普通
-                    <input type="radio" radio" name="hair_type" value="mediumcoarse" {{ old('hair_type') === 'mediumcoarse' ? 'checked' : '' }}>
+                    <input type="radio" name="hair_type" value="mediumcoarse" {{ old('hair_type') === 'mediumcoarse' ? 'checked' : '' }}>
                   </label>
                   
                   <label class="col-md-3" for="finehair">細い
