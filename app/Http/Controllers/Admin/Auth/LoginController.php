@@ -31,7 +31,7 @@ class LoginController extends Controller
      */
     
     //  ログイン後のリダイレクト先
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

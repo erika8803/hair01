@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 
 // 使用する Model 名を追加
 use App\Portfolio;
+
+// 画像保存
+use Storage;
+
 class PortfolioController extends Controller
 {
     public function add()
@@ -25,8 +29,17 @@ class PortfolioController extends Controller
         
           // フォームから画像が送信されてきたら、保存。＄image_path に画像のパスを保存する
         if (isset($form['image'])) {
-          $path = $request->file('image')->store('public/image');
-          $portfolio->image_path = basename($path);
+          
+            // 画像保存
+            // $path = $request->file('image')->store('public/image');
+            // $portfolio->image_path = basename($path);
+          
+          // herokuへ画像保存 バケットのフォルダへアップロード
+          $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+          
+          // アップロードした画像のフルパスを取得
+          $portfolio->image_path = Storage::disk('s3')->url($path);
+          
         } else {
           $portfolio->image_path = null;
         }
@@ -78,8 +91,15 @@ class PortfolioController extends Controller
         $portfolio_form = $request->all();
         
         if (isset($protfolio_form['image'])) {
-          $path = $request->file('image')->store('public/image');
-          $portfolio->image_path = basename($path);
+         
+          // 画像保存
+          // $path = $request->file('image')->store('public/image');
+          // $portfolio->image_path = basename($path);
+          
+          // herokuへ画像保存
+          $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+          $profile->image_path = Storage::disk('s3')->url($path);
+          
           
           } elseif (isset($request->remove)) {
               $portfolio->image_path = null;

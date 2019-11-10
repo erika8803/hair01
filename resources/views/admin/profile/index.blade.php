@@ -8,14 +8,18 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <form method="POST"action="{{ action('Admin\ProfileController@add') }}"></form>
+                <form method="POST"action="{{ action('Admin\ProfileController@create') }}"></form>
                  @foreach($posts as $profile)
                     {{ $profile->id }}</br>
                    
+                    <!--<div class="image">-->
+                    <!--    @if ($post->image_path)-->
+                    <!--        <img src="{{ $post->image_path }}">-->
+                    <!--    @endif-->
+                    <!--</div>-->
+                   
                     <dl class="form-rtop row">
-                        <dt class="col-sm-4" for="image">画像</dt>
-                        <dd class="col-sm-6 meta-name">{{ $profile->image_path }}</dd>
-                        
+                      
                         <dt class="col-sm-4" for="name">名前</dt>
                         <dd class="col-sm-6 meta-name">{{ $profile->name }}</dd>
                         

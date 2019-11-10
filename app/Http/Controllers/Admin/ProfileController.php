@@ -2,8 +2,13 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 // 使用する Model 名を追加
 use App\Profile;
+
+// 画像保存
+use Storage;
+
 class ProfileController extends Controller
 {
     public function add()
@@ -24,8 +29,15 @@ class ProfileController extends Controller
           
             // フォームから画像が送信されてきたら、保存。＄image_path に画像のパスを保存する
           if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $profile->image_path = basename($path);
+            
+            // 画像保存
+            // $path = $request->file('image')->store('public/image');
+            // $profile->image_path = basename($path);
+            
+            // herokuへ画像保存
+            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+            $profile->image_path = Storage::disk('s3')->url($path);
+          
           } else {
             $profile->image_path = null;
           }
@@ -39,7 +51,7 @@ class ProfileController extends Controller
           $profile->save();
     
               // 入力一覧を表示。
-          return redirect('admin/profile');
+          return redirect('admin/profile/create');
           
         }
     

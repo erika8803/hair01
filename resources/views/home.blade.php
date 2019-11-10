@@ -15,17 +15,6 @@
                     @endif
 
                     You are logged in!
-
-                    <h5>プロフィール編集画面</h5>
-                    <a href="{{ action('Admin\ProfileController@edit') }}">
-                       <input type="submit" class="btn btn-primary" value="クリック">
-                    </a>
-                    
-                    <h5>ポートフォリオ 一覧画面</h5>
-                    <a href="{{ action('Admin\PortfolioController@index') }}">
-                        <input type="submit" class="btn btn-primary" value="クリック">
-                    </a>
-                    
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ action('Admin\PortfolioController@add') }}" role="button" class="btn btn-primary">新規作成</a>
+                <a href="{{ action('Admin\PortfolioController@create') }}" role="button" class="btn btn-primary">新規作成</a>
             </div>
             <div class="col-md-8">
                 <form action="{{ action('Admin\PortfolioController@index') }}" method="get">
@@ -36,6 +36,12 @@
         </div>
                      @foreach($posts as $portfolio)
                         {{ $portfolio->id }}</br>
+                        
+                        <!--<div class="image col-md-6 text-right mt-4">-->
+                        <!--     @if ($post->image_path)-->
+                        <!--          <img src="{{ $post->image_path }}">-->
+                        <!--     @endif-->
+                        <!--</div>-->
                         
                         <dl class="form-rtop row">
                         

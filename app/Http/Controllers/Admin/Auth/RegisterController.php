@@ -8,6 +8,7 @@ use App\Admin;
 
 // 追加
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -79,29 +80,31 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(Request $request)
-    {
-        $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all() )));
-        
-        
+
+/**
+    * Create a new user instance after a valid registration.
+    *
+    * @param  array  $data
+    * @return User
+    */
+   protected function create(array $data)
+   {
+       return Admin::create([
+           'name' => $data['name'],
+           'email' => $data['email'],
+           'password' => bcrypt($data['password']),
+       ]);
+    return redirect ('admin.login');   
        
-        // // Adminに変更
-        // $admin = Admin::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-        
-        return $this->registered($request, $user) ?: redirect('admin.auth.register');
-        
-    }
+   }
+//     public function register(Request $request)
+//   {
+//       $this->validator($request->all())->validate();
+//       event(new Registered($user = $this->create($request->all())));
+//     //   Mail::to($ser->email)->send(new ConfirmationEmail($user));
+//     //   return back()->with('status','メールアドレスを確認して下さい。');
+//     return redirect ('admin.auth.login');
+//   }
     
     
     // // 管理者認証のguardを指定

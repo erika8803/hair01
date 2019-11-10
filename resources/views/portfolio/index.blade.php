@@ -3,18 +3,17 @@
 @section('content')
     <div class="container">
      <h3>ポートフォリ一覧</h3>
-        <form action="{{ action('Admin\ProfileController@add') }}" method="get">
-            <input type="submit" class="btn btn-primary" value="Profile新規作成">
+        <!--<form action="{{ action('Admin\ProfileController@add') }}" method="get">-->
+        <!--    <input type="submit" class="btn btn-primary" value="Profile新規作成">-->
             
-            <a href="{{ action('Admin\PortfolioController@add') }}">
-            <input type="button" class="btn btn-primary" value="Portfolio新規作成">
-            </a>
-            <a href="{{ action('Admin\PortfolioController@index') }}">
-            <input type="button" class="btn btn-primary" value="Portfolio編集画面">
-            </a>
-           
-            
-        </form>
+        <!--    <a href="{{ action('Admin\PortfolioController@add') }}">-->
+        <!--    <input type="button" class="btn btn-primary" value="Portfolio新規作成">-->
+        <!--    </a>-->
+        <!--    <a href="{{ action('Admin\PortfolioController@index') }}">-->
+        <!--    <input type="button" class="btn btn-primary" value="Portfolio編集画面">-->
+        <!--    </a>-->
+
+        <!--</form>-->
         </br>
             <div class="row">
                 <div class="posts">
@@ -31,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="image">
                                         @if ($post->image_path)
-                                            <img src="{{ asset('storage/image/' . $post->image_path) }}">
+                                            <img src="{{ $post->image_path }}">
                                         @endif
                                     </div>   
                                     <div class="date">
