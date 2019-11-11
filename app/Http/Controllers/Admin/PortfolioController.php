@@ -3,9 +3,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// 追加
+use Auth;
 // 使用する Model 名を追加
 use App\Portfolio;
-
 // 画像保存
 use Storage;
 
@@ -35,13 +36,13 @@ class PortfolioController extends Controller
             // $portfolio->image_path = basename($path);
           
           // herokuへ画像保存 バケットのフォルダへアップロード
-          $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
+          $path = Storage::disk('s3')->putfile('/',$request->file('image'),'public');
           
           // アップロードした画像のフルパスを取得
-          $portfolio->image_path = Storage::disk('s3')->url($path);
+          $form['image_path'] = Storage::disk('s3')->url($path);
           
         } else {
-          $portfolio->image_path = null;
+           $form['image_path'] = null;
         }
         
           // フォームから送信されてきた_tokenを削除する
@@ -50,6 +51,7 @@ class PortfolioController extends Controller
         
           // データベースに保存
         $portfolio->fill($form);
+        $portfolio->user_id = Auth::user()->id;
         $portfolio->save();
     
             // リダイレクトする
@@ -61,10 +63,10 @@ class PortfolioController extends Controller
         $cond_title = $request->cond_title;
         if ($cond_title !='') {
             // 検索されたら結果を取得
-          $posts = Portfolio::where('name', $cond_title)->get();
+          $posts = Portfolio::where('hair_style', 'LIKE', "%$cond_title%" )->where('user_id', Auth::user()->id )->orderBy('created_at', 'DESC')->get();
         } else {
             // それ以外はすべて取得
-          $posts = Portfolio::all();
+          $posts = Portfolio::where('user_id', Auth::user()->id )->orderBy('created_at', 'DESC')->get();
         }
         return view('admin.portfolio.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
@@ -90,19 +92,21 @@ class PortfolioController extends Controller
         // 送信されてきたフォームデータを格納する
         $portfolio_form = $request->all();
         
-        if (isset($protfolio_form['image'])) {
+        if (isset($portfolio_form['image'])) {
          
           // 画像保存
           // $path = $request->file('image')->store('public/image');
           // $portfolio->image_path = basename($path);
           
-          // herokuへ画像保存
-          $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
-          $profile->image_path = Storage::disk('s3')->url($path);
+         // herokuへ画像保存 バケットのフォルダへアップロード
+          $path = Storage::disk('s3')->putfile('/',$request->file('image'),'public');
+          
+          // アップロードした画像のフルパスを取得
+          $portfolio_form['image_path'] = Storage::disk('s3')->url($path);
           
           
           } elseif (isset($request->remove)) {
-              $portfolio->image_path = null;
+              $portfolio_form['image_path'] = null;
             }
             
          unset($portfolio_form['_token']);

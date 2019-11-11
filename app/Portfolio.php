@@ -16,7 +16,6 @@ class Portfolio extends Model
       'straighte' => 'required',
       'perm' => 'required',
       'hair_style' => 'required',
-      'hair_care' => 'required',
-      'other' => 'required',
+     
       );
 }

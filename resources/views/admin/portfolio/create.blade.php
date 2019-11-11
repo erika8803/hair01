@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <form action="{{ action('Admin\PortfolioController@create') }}" method="post">
+      <form action="{{ action('Admin\PortfolioController@create') }}" method="post" enctype="multipart/form-data">
      
      
         @if (count($errors) > 0)

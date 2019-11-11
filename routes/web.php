@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin'], function()
       Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
       Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
       Route::get('register', 'Admin\Auth\RegisterController@showRegisterForm')->name('admin.register');
-      Route::post('register', 'Admin\Auth\RegisterController@register')->name('admin.register');
+      Route::post('register', 'Admin\Auth\RegisterController@create')->name('admin.register');
   });
 
 // Adminログイン後
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
       {
         // ログアウト画面
         Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.auth.logout');
-        Route::get('home','Admin\Auth\HomeController@index')->name('admin.auth.home');
+        Route::get('home','Admin\HomeController@index')->name('admin.auth.home');
         
   // プロフィール画面表示
         Route::get('profile/create', 'Admin\ProfileController@add');
@@ -58,4 +58,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'UserController@index');
+
+// User
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() 
+      {
+      Route::get('portfolio', 'UserController@index');
+      Route::get('profile', 'UserController@show');
+      });

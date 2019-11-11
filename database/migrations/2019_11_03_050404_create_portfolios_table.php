@@ -15,6 +15,7 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
             $table->string('image_path')->nullable();
             $table->string('gender');
             $table->string('hair_type');

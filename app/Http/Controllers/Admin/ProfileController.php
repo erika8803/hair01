@@ -3,9 +3,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+// 追加
+use Auth;
 // 使用する Model 名を追加
 use App\Profile;
-
 // 画像保存
 use Storage;
 
@@ -35,11 +36,11 @@ class ProfileController extends Controller
             // $profile->image_path = basename($path);
             
             // herokuへ画像保存
-            $path = Storage::disk('s3')->putfile('/',$form['image'],'public');
-            $profile->image_path = Storage::disk('s3')->url($path);
+            $path = Storage::disk('s3')->putfile('/',$request->file('image'),'public');
+            $form['image_path'] = Storage::disk('s3')->url($path);
           
           } else {
-            $profile->image_path = null;
+            $form['image_path'] = null;
           }
           
             // フォームから送信されてきた_tokenを削除する
@@ -48,10 +49,11 @@ class ProfileController extends Controller
           
             // データベースに保存
           $profile->fill($form);
+          $profile->user_id = Auth::user()->id;
           $profile->save();
     
               // 入力一覧を表示。
-          return redirect('admin/profile/create');
+          return redirect('admin/profile');
           
         }
     
@@ -60,10 +62,10 @@ class ProfileController extends Controller
           $cond_title = $request->cond_title;
           if ($cond_title !='') {
               // 検索されたら結果を取得
-            $posts = Profile::where('name', $cond_title)->get();
+            $posts = Profile::where('user_id', Auth::user()->id )->get();
           } else {
               // それ以外はすべて取得
-            $posts = Profile::all();
+            $posts = Profile::where('user_id', Auth::user()->id )->get();
           }
           return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
         }
@@ -89,11 +91,19 @@ class ProfileController extends Controller
           $profile_form = $request->all();
           
           if (isset($profile_form['image'])) {
+            
+            // 画像保存
             $path =$request->file('image')->store('public/image');
             $profile->image_path = basename($path);
             
+            // Herokuへ画像保存　バケットのフォルダへアップロード
+            $path = Storage::disk('s3')->putfile('/',$request->file('image'),'public');
+
+            // アップロードした画像のフルパスを取得
+            $profile_form['image_path'] = Storage::disk('s3')->url($path);
+            
           } elseif (isset($request->remove)) {
-            $profile->image_path = null;
+            $profile_form['image_path'] = null;
           }
           
           // 削除

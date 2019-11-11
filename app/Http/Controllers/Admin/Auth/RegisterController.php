@@ -9,6 +9,7 @@ use App\Admin;
 // 追加
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      */
      
     //  リダイレクト先
-    protected $redirectTo = '/admin/auth/home';
+    protected $redirectTo = '/';
     
     
     // public function __construct()
@@ -87,16 +88,24 @@ class RegisterController extends Controller
     * @param  array  $data
     * @return User
     */
-   protected function create(array $data)
-   {
-       return Admin::create([
-           'name' => $data['name'],
-           'email' => $data['email'],
-           'password' => bcrypt($data['password']),
-       ]);
-    return redirect ('admin.login');   
-       
-   }
+   protected function create(Request $request)
+{
+    $data = $request->all();
+    // Adminに変更
+    $admin = Admin::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+    ]);
+
+    // ログインさせる
+    $user = Auth::guard('admin')->loginUsingId($admin->id);
+    if (!$user) {
+        return redirect('/admin/login');
+    }
+
+    return redirect('/admin/auth/home');
+}
 //     public function register(Request $request)
 //   {
 //       $this->validator($request->all())->validate();

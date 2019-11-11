@@ -49,7 +49,7 @@
                         <ul class="navbar-nav ml-auto">
                             @guest
                             <li>
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}
+                                <a class="nav-link" href="{{ route('admin.auth.login') }}">{{ __('messages.login') }}
                                 </a>
                             </li>
                             @else
@@ -63,7 +63,7 @@
                                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('messages.Logout') }}
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

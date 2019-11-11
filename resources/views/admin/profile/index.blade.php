@@ -12,14 +12,14 @@
                  @foreach($posts as $profile)
                     {{ $profile->id }}</br>
                    
-                    <!--<div class="image">-->
-                    <!--    @if ($post->image_path)-->
-                    <!--        <img src="{{ $post->image_path }}">-->
-                    <!--    @endif-->
-                    <!--</div>-->
-                   
+                  
                     <dl class="form-rtop row">
-                      
+                        <dt class="col-sm-4" for="name">画像</dt>
+                        <dd class="col-sm-6 meta-name">
+                            @if ($profile->image_path)
+                                <img width="200px" src="{{ $profile->image_path }}">
+                            @endif
+                        </dd>
                         <dt class="col-sm-4" for="name">名前</dt>
                         <dd class="col-sm-6 meta-name">{{ $profile->name }}</dd>
                         

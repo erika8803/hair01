@@ -37,13 +37,16 @@
                      @foreach($posts as $portfolio)
                         {{ $portfolio->id }}</br>
                         
-                        <!--<div class="image col-md-6 text-right mt-4">-->
-                        <!--     @if ($post->image_path)-->
-                        <!--          <img src="{{ $post->image_path }}">-->
-                        <!--     @endif-->
-                        <!--</div>-->
-                        
+                       
                         <dl class="form-rtop row">
+                            
+                        <dt class="col-sm-3" for="image">画像</dt>
+                        <dd class="col-sm-8 meta-name">
+                             @if ($portfolio->image_path)
+                                  <img width="200px" src="{{ $portfolio->image_path }}">
+                             @endif
+                        </dd>
+                        
                         
                         <dt class="col-sm-3" for="gender">性別</dt>
                         <dd class="col-sm-8 meta-name">{{ $portfolio->gender }}</dd>

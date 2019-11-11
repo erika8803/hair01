@@ -3,17 +3,6 @@
 @section('content')
     <div class="container">
      <h3>ポートフォリ一覧</h3>
-        <!--<form action="{{ action('Admin\ProfileController@add') }}" method="get">-->
-        <!--    <input type="submit" class="btn btn-primary" value="Profile新規作成">-->
-            
-        <!--    <a href="{{ action('Admin\PortfolioController@add') }}">-->
-        <!--    <input type="button" class="btn btn-primary" value="Portfolio新規作成">-->
-        <!--    </a>-->
-        <!--    <a href="{{ action('Admin\PortfolioController@index') }}">-->
-        <!--    <input type="button" class="btn btn-primary" value="Portfolio編集画面">-->
-        <!--    </a>-->
-
-        <!--</form>-->
         </br>
             <div class="row">
                 <div class="posts">
@@ -30,7 +19,7 @@
                                 <div class="col-md-6">
                                     <div class="image">
                                         @if ($post->image_path)
-                                            <img src="{{ $post->image_path }}">
+                                            <img width="500" src="{{ $post->image_path }}">
                                         @endif
                                     </div>   
                                     <div class="date">
@@ -46,6 +35,11 @@
                                         <div class="body mt-1">
                                             {{ str_limit($post->hair_care, 1500) }}
                                         </div>
+                                        
+                                    <a href="{{ action('user/UserController@index') }}">
+                                    <input type="button" class="btn btn-primary btn-block" value="プロフィール一覧">
+                                    </a>
+                                    
                                 </div>
                             @if (($count % 2)) 
                                 <!--</div>-->
@@ -60,7 +54,6 @@
                     @if (!($count % 2)) 
                             <!-- 投稿が奇数の場合の閉じタグ -->
                             </div> 
-                           
                     @endif
                     </div>
                 </div>
