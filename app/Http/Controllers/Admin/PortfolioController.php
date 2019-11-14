@@ -78,6 +78,10 @@ class PortfolioController extends Controller
         if (empty($portfolio)) {
           abort(404);
         }
+        // ログイン中のユーザーIDを、$portfolioのuser_idが一致しているか確認
+        if ($portfolio->user_id !== Auth::user()->id) {
+          abort(404);
+        }
         return view('admin.portfolio.edit', ['portfolio_form' => $portfolio]);
     }
     
@@ -120,7 +124,13 @@ class PortfolioController extends Controller
       
     public function delete(Request $request)
     {
+        // portfolio Modelからデータを取得
         $portfolio = Portfolio::find($request->id);
+       
+        // ログイン中のユーザーIDと、$portfolioのuser_idが一致しているか確認
+        if ($portfolio->user_id !== Auth::user()->id) {
+          abort(404);
+        }
         $portfolio->delete();
         return redirect('admin/portfolio');
     }

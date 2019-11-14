@@ -53,22 +53,22 @@ class ProfileController extends Controller
           $profile->save();
     
               // 入力一覧を表示。
-          return redirect('admin/profile');
+          return redirect('admin/profile/form');
           
         }
     
-    public function index(Request $request)
-        {
-          $cond_title = $request->cond_title;
-          if ($cond_title !='') {
-              // 検索されたら結果を取得
-            $posts = Profile::where('user_id', Auth::user()->id )->get();
-          } else {
-              // それ以外はすべて取得
-            $posts = Profile::where('user_id', Auth::user()->id )->get();
-          }
-          return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
-        }
+    // public function index(Request $request)
+    //     {
+    //       $cond_title = $request->cond_title;
+    //       if ($cond_title !='') {
+    //           // 検索されたら結果を取得
+    //         $posts = Profile::where('user_id', Auth::user()->id )->get();
+    //       } else {
+    //           // それ以外はすべて取得
+    //         $posts = Profile::where('user_id', Auth::user()->id )->get();
+    //       }
+    //       return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    //     }
     
     public function edit(Request $request)
         {
@@ -114,7 +114,7 @@ class ProfileController extends Controller
           // 該当するデータを上書きして保存
           $profile->fill($profile_form)->save();
           
-          return redirect('admin/Profile');
+          return redirect('admin/Profile/form');
         }
         
     public function delete(Request $request)
@@ -122,6 +122,16 @@ class ProfileController extends Controller
           $profile = Profile::find($request->id);
           $profile->delete();
           return redirect('admin/profile');
+    }
+    
+    public function form() {
+      
+      // すでにプロフィールを登録しているかどう確認する
+      $profile = Profile::where('user_id', Auth::user()->id )->first();
+      if (empty($profile)) {
+        $prodile = new Profile();
+      }
+      return view('admin.profile.form', ['profile' => $profile]);
     }
     
 }

@@ -6,14 +6,14 @@
         <div class="col-md-8">
             <div class="card">
                 <h4>Adminユーザー</h4>
-                <div class="card-header">{{ __('messages.Login') }}</div>
+                <div class="card-header">ADMIN{{ __('messages.Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('messages.E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">ADMIN{{ __('messages.E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('messages.Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">ADMIN{{ __('messages.Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">

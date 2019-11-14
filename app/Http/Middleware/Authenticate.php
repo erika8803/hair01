@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+// 追加
+use Illuminate\Support\Facades\Route;
+
 
 class Authenticate extends Middleware
 {
@@ -15,6 +18,11 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            
+            // Adominユーザーの場合追加
+            if (Route::is('admin.*')) {
+                return route('admin.login');
+            }
             return route('login');
         }
     }

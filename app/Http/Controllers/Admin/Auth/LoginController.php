@@ -31,7 +31,7 @@ class LoginController extends Controller
      */
     
     //  ログイン後のリダイレクト先
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -50,13 +50,7 @@ class LoginController extends Controller
     {
         return \Auth::guard('admin');
     }
- 
-    // public function logout(Request $request)
-    // {
-    //     Auth::guard('admin')->logout();
-    //     return redirect('/admin/auth/login');
-    // }
-    
+  
      public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');

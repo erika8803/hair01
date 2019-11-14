@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function() 
   {
       // home画面
-      Route::get('home', 'Admin\Auth\HomeController@index')->name('admin.home');
+      Route::get('home', 'Admin\HomeController@index')->name('admin.home');
       // login画面
       Route::get('login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
       Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
@@ -27,24 +27,28 @@ Route::group(['prefix' => 'admin'], function()
       Route::post('register', 'Admin\Auth\RegisterController@create')->name('admin.register');
   });
 
-// Adminログイン後
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() 
+// Adminログイン後                              
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() 
       {
         // ログアウト画面
-        Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.auth.logout');
-        Route::get('home','Admin\HomeController@index')->name('admin.auth.home');
+        Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+        Route::get('home','Admin\HomeController@index')->name('admin.home');
         
   // プロフィール画面表示
-        Route::get('profile/create', 'Admin\ProfileController@add');
+        // Route::get('profile/create', 'Admin\ProfileController@add');
+        // Route::post('profile/create', 'Admin\ProfileController@create');
+        // Route::get('profile', 'Admin\ProfileController@index');
+        // Route::get('profile/edit', 'Admin\ProfileController@edit');
+        // Route::post('profile/edit', 'Admin\ProfileController@update');
+        // Route::get('profile/delete', 'Admin\ProfileController@delete');
+        
+        Route::get('profile/form', 'Admin\ProfileController@form');
         Route::post('profile/create', 'Admin\ProfileController@create');
-        Route::get('profile', 'Admin\ProfileController@index');
-        Route::get('profile/edit', 'Admin\ProfileController@edit');
         Route::post('profile/edit', 'Admin\ProfileController@update');
-        Route::get('profile/delete', 'Admin\ProfileController@delete');
       });
   
  // ポートフォリオ 画面表示      
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() 
       {
         Route::get('portfolio/create', 'Admin\PortfolioController@add');
         Route::post('portfolio/create', 'Admin\PortfolioController@create');

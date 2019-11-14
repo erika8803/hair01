@@ -11,7 +11,8 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.register') }}">
                         @csrf
-
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('messages.Name') }}</label>
 

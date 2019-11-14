@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
      
     //  リダイレクト先
-    protected $redirectTo = '/';
+    protected $redirectTo = 'admin/home';
     
     
     // public function __construct()
@@ -88,24 +88,24 @@ class RegisterController extends Controller
     * @param  array  $data
     * @return User
     */
-   protected function create(Request $request)
-{
-    $data = $request->all();
-    // Adminに変更
-    $admin = Admin::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-    ]);
-
-    // ログインさせる
-    $user = Auth::guard('admin')->loginUsingId($admin->id);
-    if (!$user) {
-        return redirect('/admin/login');
+    protected function create(Request $request)
+    {
+        $data = $request->all();
+        // Adminに変更
+        $admin = Admin::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+    
+        // ログインさせる
+        $user = Auth::guard('admin')->loginUsingId($admin->id);
+        if (!$user) {
+            return redirect('/admin/login');
+        }
+    
+        return redirect('/admin/home');
     }
-
-    return redirect('/admin/auth/home');
-}
 //     public function register(Request $request)
 //   {
 //       $this->validator($request->all())->validate();
