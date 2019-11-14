@@ -36,7 +36,7 @@
                                             {{ str_limit($post->hair_care, 1500) }}
                                         </div>
                                         
-                                    <a href="{{ action('UserController@show') }}">
+                                    <a href="{{ action('UserController@index') }}">
                                     <input type="button" class="btn btn-primary btn-block" value="プロフィール一覧">
                                     </a>
                                     
