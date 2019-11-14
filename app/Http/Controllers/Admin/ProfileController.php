@@ -129,7 +129,7 @@ class ProfileController extends Controller
       // すでにプロフィールを登録しているかどう確認する
       $profile = Profile::where('user_id', Auth::user()->id )->first();
       if (empty($profile)) {
-        $prodile = new Profile();
+        $profile = new Profile();
       }
       return view('admin.profile.form', ['profile' => $profile]);
     }

@@ -8,7 +8,7 @@
                 <div class="posts">
                     <div class="post">
                     
-                                 @foreach($posts as $profile)
+                                
                                     {{ $profile->id }}</br>
                                     <dl class="form-rtop row">
                                         <dt class="col-sm-4" for="name">画像</dt>
@@ -38,8 +38,8 @@
                                         <dt class="col-sm-4" for="address">店舗住所</dt>
                                         <dd class="col-sm-6 meta-name">{{ $profile->address }}</dd>
                                     </dl>
-                                    @endforeach
-                                    <a href="{{ action('Admin\ProfileController@edit', ['id' => $profile->id]) }}">
+                                    
+                                    <a href="#">
                                       <input type="submit" class="btn btn-primary" value="お気に入り登録">
                                     </a>
                     </div>

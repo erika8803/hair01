@@ -49,7 +49,10 @@
                         
                         
                         <dt class="col-sm-3" for="gender">性別</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->gender }}</dd>
+                        <dd class="col-sm-8 meta-name">
+                            @if ($portfolio->gender === 'male' )男性 @endif
+                            @if ($portfolio->gender === 'female' )女性 @endif
+                        </dd>
                         
                         <dt class="col-sm-3" for="hair_type">髪質</dt>
                         <dd class="col-sm-8 meta-name">{{ $portfolio->hair_type }}</dd>
@@ -64,19 +67,19 @@
                         <dd class="col-sm-8 meta-name">{{ $portfolio->hair_color }}</dd>
                         
                         <dt class="col-sm-3" for="straighte">ストレートパーマー</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->straighte }}</dd>
+                        <dd class="col-sm-8 meta-name">{{ $portfolio->straighte == 1 ? 'あり' : 'なし' }}</dd>
                         
                         <dt class="col-sm-3" for="perm">パーマ</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->perm }}</dd>
+                        <dd class="col-sm-8 meta-name">{{ $portfolio->perm == 1 ? 'あり' : 'なし' }}</dd>
                         
                         <dt class="col-sm-3" for="hair_style">施術した内容</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->hair_style }}</dd>
+                        <dd class="col-sm-8 meta-name">{!! nl2br(e( $portfolio->hair_style )) !!}</dd>
                         
                         <dt class="col-sm-3" for="hair_care">手入れ方法</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->hair_care }}</dd>
+                        <dd class="col-sm-8 meta-name">{!! nl2br(e( $portfolio->hair_care )) !!}</dd>
                         
                         <dt class="col-sm-3" for="other">その他</dt>
-                        <dd class="col-sm-8 meta-name">{{ $portfolio->other }}</dd>
+                        <dd class="col-sm-8 meta-name">{!! nl2br(e( $portfolio->other )) !!}</dd>
                   </dl>
                 <div>
                     <a href="{{ action('Admin\PortfolioController@edit', ['id' => $portfolio->id]) }}">

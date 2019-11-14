@@ -36,28 +36,28 @@
               <div class="form-rtop row">
                 <label class="col-md-10" for="name">名前</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="name" value="{{ old('name', $prodile->name) }}">
+                  <input type="text" class="form-control" name="name" value="{{ old('name', $profile->name) }}">
                 </div>
               </div>
               
               <div class="form-rtop row">
                 <label class="col-md-10" for="career">スタイリスト歴</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="career" value="{{ old('career', $prodile->career) }}">
+                  <input type="text" class="form-control" name="career" value="{{ old('career', $profile->career) }}">
                 </div>
               </div>
           
               <div class="form-rtop row">
                 <label class="col-md-10" for="style">得意なスタイル</label>
                 <div class="col-md-10">
-                  <textarea type="text" class="form-control" name="style">{{ old('style', $prodile->style) }}</textarea>
+                  <textarea type="text" class="form-control" name="style">{{ old('style', $profile->style) }}</textarea>
                 </div>
               </div>
           
               <div class="form-rtop row">
                 <label class="col-md-10" for="counseling">カウンセリング方法</label>
                 <div class="col-md-10">
-                  <textarea type="text" class="form-control" name="counseling">{{ old('counseling', $prodile->counseling) }}</textarea>
+                  <textarea type="text" class="form-control" name="counseling">{{ old('counseling', $profile->counseling) }}</textarea>
                 </div>
               </div>
               
@@ -66,21 +66,21 @@
               <div class="form-rtop row">
                 <label class="col-md-10" for="shopname">店舗名</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="shopname" value="{{ old('shopname', $prodile->shopname) }}">
+                  <input type="text" class="form-control" name="shopname" value="{{ old('shopname', $profile->shopname) }}">
                 </div>
               </div>
               
               <div class="form-rtop row">
                 <label class="col-md-10" for="url">店舗のURL</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="url" value="{{ old('url', $prodile->url) }}">
+                  <input type="text" class="form-control" name="url" value="{{ old('url', $profile->url) }}">
                 </div>
               </div>
               
               <div class="form-rtop row">
                 <label class="col-md-10" for="address">店舗住所</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" name="address" value="{{ old('address', $prodile->address) }}">
+                  <input type="text" class="form-control" name="address" value="{{ old('address', $profile->address) }}">
                 </div>
               </div>
               

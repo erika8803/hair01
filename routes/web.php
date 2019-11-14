@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin'], function()
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() 
       {
         // ログアウト画面
-        Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+        Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.auth.logout');
         Route::get('home','Admin\HomeController@index')->name('admin.home');
         
   // プロフィール画面表示

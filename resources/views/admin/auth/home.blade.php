@@ -17,7 +17,7 @@
                     You are logged in!
                     
                     <h5>プロフィール編集画面</h5>
-                    <a href="{{ action('Admin\ProfileController@edit') }}">
+                    <a href="{{ action('Admin\ProfileController@form') }}">
                        <input type="submit" class="btn btn-primary" value="クリック">
                     </a>
                     

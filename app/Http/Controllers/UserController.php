@@ -21,10 +21,11 @@ class UserController extends Controller
     
     public function show(Request $request)
     {
-       $posts = Profile::all();
+       $profile = Profile::where('user_id', $request->id)->first();
+       
       // if (empty($profile)) {
       //   abort(404);
       // }
-      return view('user.profile_index', ['posts' => $posts]);
+      return view('user.profile_index', ['profile' => $profile]);
     }
 }
