@@ -39,6 +39,11 @@
                                         <dd class="col-sm-6 meta-name">{{ $profile->address }}</dd>
                                     </dl>
                                     
+                                   
+                                    <a href="{{ action('UserController@index') }}">
+                                      <input type="submit" class="btn btn-primary" value="ポートフォリオ一覧へ戻る">
+                                    </a>
+                                    
                                     <a href="#">
                                       <input type="submit" class="btn btn-primary" value="お気に入り登録">
                                     </a>

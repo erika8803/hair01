@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('content')
-    <div class="container">
+    <div class="container portfolio">
      <h3>ポートフォリ一覧</h3>
         </br>
             <div class="row">
@@ -25,17 +25,18 @@
                                     <div class="date">
                                         {{ $post->updated_at->format('Y年m月d日') }}
                                     </div>
-                                    <h5>ヘアースタイル</h5>
+                                    <label>ヘアースタイル
                                         <div class="title">
                                             {{ str_limit($post->hair_style, 150) }}
                                         </div>
+                                    </label>
                                         
-                                    </br>
-                                    <h6>ヘアーケア方法</h6>
+                                    <label>ヘアーケア方法
                                         <div class="body mt-1">
                                             {{ str_limit($post->hair_care, 1500) }}
                                         </div>
-                                        
+                                    </label>
+                                    
                                     <a href="{{ url('user/profile?id='.$post->user_id) }}">
                                     <input type="button" class="btn btn-primary btn-block" value="プロフィール詳細">
                                     </a>

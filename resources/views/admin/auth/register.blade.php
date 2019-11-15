@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h4>Adminユーザー</h4>
-                <div class="card-header">{{ __('messages.Register') }}</div>
+                <div class="card-header">Admin_{{ __('messages.Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.register') }}">

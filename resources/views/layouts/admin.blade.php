@@ -18,8 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <!-- 追加 -->
-        <style>body{background-color: #26263c;}</style>
+    <!-- 追加 -->
+    <style>body{background-color: #26263c;}</style>
 </head>
 <body>
     <div id="app">
@@ -43,11 +43,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.login') }}">{{ __('messages.Login') }}</a>
+                                <a class="nav-link" href="{{ route('admin.login') }}">Admin{{ __('messages.Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('messages.Register') }}</a>
+                                    <a class="nav-link" href="{{ route('admin.register') }}">Admin{{ __('messages.Register') }}</a>
                                 </li>
                             @endif
                         @else

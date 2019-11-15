@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Admin Dashboard</div>
+                <div class="card-header">Admin_登録完了</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,20 +14,24 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div>
+                        <a href="{{ action('Admin\ProfileController@form') }}">
+                            プロフィール登録・編集画面
+                           <!--<input type="submit" class="btn btn-primary" value="クリック">-->
+                        </a>
+                    </div>
                     
-                    <h5>プロフィール編集画面</h5>
-                    <a href="{{ action('Admin\ProfileController@form') }}">
-                       <input type="submit" class="btn btn-primary" value="クリック">
-                    </a>
+                    </br>
                     
-                    <h5>ポートフォリオ 一覧画面</h5>
-                    <a href="{{ action('Admin\PortfolioController@index') }}">
-                        <input type="submit" class="btn btn-primary" value="クリック">
-                    </a>
-                    
+                    <div>
+                        <a href="{{ action('Admin\PortfolioController@index') }}">
+                            ポートフォリオ登録・編集画面
+                            <!--<input type="submit" class="btn btn-primary" value="クリック">-->
+                        </a>
+                    </div>
                     
                 </div>
+                
             </div>
         </div>
     </div>

@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h4>一般ユーザー</h4>
-                <div class="card-header">{{ __('messages.Register') }}</div>
+                <div class="card-header">User_{{ __('messages.Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -65,7 +64,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('messages.Register') }}
                                 </button>
                             </div>
                         </div>

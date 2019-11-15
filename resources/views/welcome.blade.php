@@ -30,13 +30,19 @@
                 justify-content: center;
             }
 
-            .position-ref {
-                position: relative;
-            }
+            /*.position-ref {*/
+            /*    position: relative;*/
+            /*}*/
 
             .top-right {
                 position: absolute;
                 right: 10px;
+                top: 18px;
+            }
+            
+            .top-left {
+                position: absolute;
+                left: 10px;
                 top: 18px;
             }
 
@@ -65,49 +71,40 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">ユーザーログイン</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">ユーザー新規登録</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-            
-             @if (Route::has('login'))
-                <div class="top-left links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">ユーザーログイン</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">ユーザー新規登録</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Hair
                 </div>
-
-                <!--<div class="links">-->
-                <!--    <a href="https://laravel.com/docs">Docs</a>-->
-                <!--    <a href="https://laracasts.com">Laracasts</a>-->
-                <!--    <a href="https://laravel-news.com">News</a>-->
-                <!--    <a href="https://blog.laravel.com">Blog</a>-->
-                <!--    <a href="https://nova.laravel.com">Nova</a>-->
-                <!--    <a href="https://forge.laravel.com">Forge</a>-->
-                <!--    <a href="https://github.com/laravel/laravel">GitHub</a>-->
-                <!--</div>-->
             </div>
+            
+             @if (Route::has('login'))
+                    <div class="top-right links">
+                        @auth
+                            <!--<a href="{{ url('/home') }}">Home</a>-->
+                        @else
+                            <a href="{{ route('login') }}">Userログイン</a>
+    
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}">User新規登録</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+                
+                 @if (Route::has('login'))
+                    <div class="top-left links">
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('admin.login') }}">Adminログイン</a>
+    
+                            @if (Route::has('register'))
+                                <a href="{{ route('admin.register') }}">Admin新規登録</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+            
         </div>
     </body>
 </html>
