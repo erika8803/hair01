@@ -34,17 +34,17 @@
             /*    position: relative;*/
             /*}*/
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+            /*.top-right {*/
+            /*    position: absolute;*/
+            /*    right: 10px;*/
+            /*    top: 18px;*/
+            /*}*/
             
-            .top-left {
-                position: absolute;
-                left: 10px;
-                top: 18px;
-            }
+            /*.top-left {*/
+            /*    position: absolute;*/
+            /*    left: 10px;*/
+            /*    top: 18px;*/
+            /*}*/
 
             .content {
                 text-align: center;
@@ -61,7 +61,7 @@
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
-                text-transform: uppercase;
+                /*text-transform: uppercase;*/
             }
 
             .m-b-md {
@@ -71,40 +71,41 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+           
+            @if (Route::has('login'))
+                <div class="left links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('admin.login') }}">Adminログイン</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('admin.register') }}">Admin新規登録</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+            
             <div class="content">
                 <div class="title m-b-md">
                     Hair
                 </div>
             </div>
             
-             @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            <!--<a href="{{ url('/home') }}">Home</a>-->
-                        @else
-                            <a href="{{ route('login') }}">Userログイン</a>
-    
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">User新規登録</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-                
-                 @if (Route::has('login'))
-                    <div class="top-left links">
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <a href="{{ route('admin.login') }}">Adminログイン</a>
-    
-                            @if (Route::has('register'))
-                                <a href="{{ route('admin.register') }}">Admin新規登録</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
             
+            @if (Route::has('login'))
+                <div class="right links">
+                    @auth
+                        <!--<a href="{{ url('/home') }}">Home</a>-->
+                @else
+                    <a href="{{ route('login') }}">Userログイン</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">User新規登録</a>
+                        @endif
+                    @endauth
+                    </div>
+            @endif
+
         </div>
     </body>
 </html>

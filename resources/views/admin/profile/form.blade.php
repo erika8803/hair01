@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h2>プロフィール</h2>
+      <h2>【プロフィール】</h2>
       
         @if (empty($profile->id))
           <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
@@ -27,9 +27,16 @@
               <h4>スタイリスト情報</h4>
               
               <div class="form-group row">
-                <label class="col-md-10">画像</label>
+                <label class="col-md-10" for="image">画像</label>
                 <div class="col-md-10">
-                   <input type="file" class="form-control-file" name="image">
+                  @if (empty($profile->id))
+                    <input type="file" class="form-control-file" name="image">
+                  @else
+                    @if ($profile->image_path)
+                    <img width="200px" src="{{ $profile->image_path }}">
+                    @endif
+                  @endif
+                   
                 </div>
               </div>
                     
@@ -92,6 +99,8 @@
                   <input type="submit" class="btn btn-primary" value="新規登録">
                 @else
                   <input type="submit" class="btn btn-primary" value="更新">
+                  <a href="{{ action('Admin\PortfolioController@index') }}">
+                  <input type="button" class="btn btn-primary" value="ポートフォリオ一覧へ">
                 @endif
       </form>
     </div>

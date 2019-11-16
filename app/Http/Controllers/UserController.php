@@ -13,10 +13,17 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-      // 投稿日時順に表示
-      $posts = Portfolio::all()->sortByDesc('updated_at');
+      $cond_title = $request->cond_title;
+      if ($cond_title !='') {
+        $posts = Portfolio::where('hair_style', 'LIKE', "%$cond_title%" )->orderBy('created_at', 'DESC')->get();
+      } else {
+        $posts = Portfolio::all()->sortByDesc('updated_at');
+      }
+      
+      // // 投稿日時順に表示
+      // $posts = Portfolio::all()->sortByDesc('updated_at');
     
-      return view('user.portfolio_index', ['posts' => $posts]);
+      return view('user.portfolio_index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
     
     public function show(Request $request)

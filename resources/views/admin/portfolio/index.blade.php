@@ -35,8 +35,8 @@
             </div>
         </div>
             @foreach($posts as $portfolio)
-                {{ $portfolio->id }}</br>
-                
+                <input type="hidden" value="{{ $portfolio->id }}">
+                </br>
                
                 <dl class="form-rtop row">
                     <dt class="col-sm-3" for="image">画像</dt>
@@ -49,12 +49,11 @@
                     
                     <dt class="col-sm-3" for="gender">性別</dt>
                     <dd class="col-sm-8 meta-name">
-                        @if ($portfolio->gender === 'male' )男性 @endif
                         @if ($portfolio->gender === 'female' )女性 @endif
+                        @if ($portfolio->gender === 'male' )男性 @endif
                     </dd>
                     
                     <dt class="col-sm-3" for="hair_type">髪質</dt>
-                    
                     <dd class="col-sm-8 meta-name">
                         @if ($portfolio->hair_type === 'coarsehair' )太い @endif
                         @if ($portfolio->hair_type === 'mediumcoarse' )普通 @endif

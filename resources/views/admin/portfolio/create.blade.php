@@ -17,7 +17,7 @@
           </ul>
         @endif
               <br>
-              <h4>ポートフォリオ</h4>
+              <h4>【ポートフォリオ】</h4>
               
               <div class="form-group row">
                 <label class="col-md-10">画像</label>
@@ -30,12 +30,12 @@
                 <label class="col-md-3" for="gender">性別</label>
                 
                 <div class="col-md-8">
-                  <label class="col-md-3" for="male">男性
-                    <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
-                  </label>
-                  
                  <label class="col-md-3" for="female">女性
                     <input type="radio"  name="gender" value="female" {{ old('gender') === 'female' ? 'checked' : '' }}>
+                  </label>
+                  
+                <label class="col-md-3" for="male">男性
+                    <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
                   </label>
                   
                 </div>

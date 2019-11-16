@@ -31,12 +31,11 @@
                         <label class="col-md-3" for="gender">性別</label>
                         
                         <div class="col-md-8">
-                            <label class="col-md-3" for="male">男性
-                                <input type="radio" name="gender" value="male" {{ old('gender', $portfolio_form->gender ) === 'male' ? 'checked' : '' }}>
-                            </label>
-                          
                             <label class="col-md-3" for="female">女性
                                 <input type="radio" name="gender" value="female" {{ old('gender', $portfolio_form->gender) === 'female' ? 'checked' : '' }}>
+                            </label>
+                            <label class="col-md-3" for="male">男性
+                                <input type="radio" name="gender" value="male" {{ old('gender', $portfolio_form->gender ) === 'male' ? 'checked' : '' }}>
                             </label>
                         </div>
                     </div>

@@ -34,17 +34,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function()
         Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.auth.logout');
         Route::get('home','Admin\HomeController@index')->name('admin.home');
         
-  // プロフィール画面表示
-        // Route::get('profile/create', 'Admin\ProfileController@add');
-        // Route::post('profile/create', 'Admin\ProfileController@create');
-        // Route::get('profile', 'Admin\ProfileController@index');
-        // Route::get('profile/edit', 'Admin\ProfileController@edit');
-        // Route::post('profile/edit', 'Admin\ProfileController@update');
-        // Route::get('profile/delete', 'Admin\ProfileController@delete');
-        
+        // プロフィール画面表示
         Route::get('profile/form', 'Admin\ProfileController@form');
         Route::post('profile/create', 'Admin\ProfileController@create');
-        Route::post('profile/edit', 'Admin\ProfileController@update');
+        Route::post('profile/form', 'Admin\ProfileController@update');
       });
   
  // ポートフォリオ 画面表示      

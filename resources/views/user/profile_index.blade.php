@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="container">
-     <h3>プロフィール</h3>
+     <h3>【プロフィール】</h3>
         </br>
             <div class="row">
                 <div class="posts">
                     <div class="post">
                     
                                 
-                                    {{ $profile->id }}</br>
+                                 <input type="hidden"  value="{{ $profile->id }}"> </br>
                                     <dl class="form-rtop row">
                                         <dt class="col-sm-4" for="name">画像</dt>
                                         <dd class="col-sm-6 meta-name">

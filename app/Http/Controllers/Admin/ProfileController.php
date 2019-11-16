@@ -12,23 +12,29 @@ use Storage;
 
 class ProfileController extends Controller
 {
-    public function add()
-        {
-          return view('admin.profile.create');
+  
+    public function form() {
+      
+        // すでにプロフィールを登録しているかどう確認する
+        $profile = Profile::where('user_id', Auth::user()->id )->first();
+        if (empty($profile)) {
+          $profile = new Profile();
         }
-        
+        return view('admin.profile.form', ['profile' => $profile]);
+    }
+    
     public function create(Request $request)
         {
-            // Validationを行う $thisは擬似変数と呼ばれ、呼び出し元のオブジェクトへの参照を意味します
+          // Validationを行う $thisは擬似変数と呼ばれ、呼び出し元のオブジェクトへの参照を意味します
           $this->validate($request, Profile::$rules);
         
-            // Profile Modelからデータを取得
+          // Profile Modelからデータを取得
           $profile = new Profile;
           
-            // form に入力された値を取得
+          // form に入力された値を取得
           $form = $request->all();
           
-            // フォームから画像が送信されてきたら、保存。＄image_path に画像のパスを保存する
+          // フォームから画像が送信されてきたら、保存。＄image_path に画像のパスを保存する
           if (isset($form['image'])) {
             
             // 画像保存
@@ -43,40 +49,18 @@ class ProfileController extends Controller
             $form['image_path'] = null;
           }
           
-            // フォームから送信されてきた_tokenを削除する
+          // フォームから送信されてきた_tokenを削除する
           unset($form['_token']);
           unset($form['image']);
           
-            // データベースに保存
+          // データベースに保存
           $profile->fill($form);
           $profile->user_id = Auth::user()->id;
           $profile->save();
     
-              // 入力一覧を表示。
+          // 入力一覧を表示。
           return redirect('admin/profile/form');
           
-        }
-    
-    // public function index(Request $request)
-    //     {
-    //       $cond_title = $request->cond_title;
-    //       if ($cond_title !='') {
-    //           // 検索されたら結果を取得
-    //         $posts = Profile::where('user_id', Auth::user()->id )->get();
-    //       } else {
-    //           // それ以外はすべて取得
-    //         $posts = Profile::where('user_id', Auth::user()->id )->get();
-    //       }
-    //       return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
-    //     }
-    
-    public function edit(Request $request)
-        {
-          $profile = Profile::find($request->id);
-          if (empty($profile)) {
-            abort(404);
-          }
-          return view('admin.profile.edit', ['profile_form' => $profile]);
         }
   
     public function update(Request $request)
@@ -114,24 +98,7 @@ class ProfileController extends Controller
           // 該当するデータを上書きして保存
           $profile->fill($profile_form)->save();
           
-          return redirect('admin/Profile/form');
+          return redirect('admin/profile/form');
         }
-        
-    public function delete(Request $request)
-    {
-          $profile = Profile::find($request->id);
-          $profile->delete();
-          return redirect('admin/profile');
-    }
-    
-    public function form() {
-      
-      // すでにプロフィールを登録しているかどう確認する
-      $profile = Profile::where('user_id', Auth::user()->id )->first();
-      if (empty($profile)) {
-        $profile = new Profile();
-      }
-      return view('admin.profile.form', ['profile' => $profile]);
-    }
-    
+
 }

@@ -22,8 +22,12 @@ body {
   height: 500px;
 }
 
+.posts .post .date {
+  font-size: 1.2em;
+}
+
 .posts .post .title {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .posts .post .body {
@@ -31,7 +35,7 @@ body {
 }
 
 .posts .post .image img {
-  width: 400px;
+  width: 450px;
   height: 400px;
 }
 
