@@ -3,8 +3,8 @@
 ## Description
 自分の好きな髪型から、美容師を検索することができるアプリです。
 - Admin、Userのマルチ認証機能
-- Adminでの記事投稿、更新、削除機能
-- Userでの記事閲覧、詳細閲覧機能
+- Adminでの記事投稿、検索、更新、削除機能
+- Userでの記事閲覧、検索、詳細閲覧機能
 
 ## Dependency
 開発環境：AWS Cloud9 <br>
