@@ -3,6 +3,13 @@
 ## Description
 自分の好きな髪型から、美容師を検索することができるアプリです。
 
+## Dependency
+開発環境：AWS Cloud9
+PHPバージョン：7.2.19
+フレームワーク：Laravel5.8.35
+データベース：Mysql
+画像アップロード：AWS S3
+
 ## Usage
 - Admin、Userのマルチ認証機能
 - Adminでの記事投稿、更新、削除機能
